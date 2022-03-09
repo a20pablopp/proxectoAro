@@ -6,6 +6,8 @@ package circulo;
  */
 public class Aro {
     public static final double LIMITERADIO = 0.0;
+    public static final int LIM_INT_POSI = 2147483647;
+    public static final int LIM_INT_NEGA = -2147483648;
 
     private int coordenadaX;
     private int coordenadaY;
@@ -17,7 +19,7 @@ public class Aro {
     public Aro(int valorX, int valorY, double valorRadio) {
         coordenadaX = valorX;
         coordenadaY = valorY;
-        setRadio(valorRadio);
+        radio = estableceRadio(valorRadio);
     }
 
     public void setCoordenadaX(int valorX) {
@@ -38,13 +40,35 @@ public class Aro {
 
     public void setRadio(double valorRadio) {
 
-        radio=(valorRadio < LIMITERADIO ? LIMITERADIO : valorRadio);
+        radio=estableceRadio(valorRadio);
     }
 
     public double getRadio() {
         return radio;
     }
+    
+    /*Se crean los dos metodos estáticos detallados a continuación, el 1º para
+    *no invocar a un método set en el constructor. El segundo como resultado del
+    *error que cabria esperarse si se utilizan parámetros muy grandes para 
+    *trasladarX o Y valores que pueden superar el limite de los enteros
+    *negativos y positivos, el método moverCoordenada evita esto.
+    */
+    public static double estableceRadio(double valorRadio) {
+        if(valorRadio<0)
+            valorRadio = LIMITERADIO;
+        return valorRadio;
+    }
 
+    public static int moverCoordenada(int coordenada,int trasladar) {
+        long suma = (long) coordenada + (long) trasladar;
+        if(suma>LIM_INT_POSI){
+            return LIM_INT_POSI;
+        }else if(suma<LIM_INT_NEGA){
+            return LIM_INT_NEGA;
+        }else{
+            return(coordenada + trasladar);
+        }
+    }
     public double obterDiametro() {
         return getRadio() * 2;
     }
@@ -63,7 +87,7 @@ public class Aro {
     }
 
     public void trasladarCentro(int trasladarX, int trasladarY){
-        setCoordenadaX(getCoordenadaX() + trasladarX);
-        setCoordenadaY(getCoordenadaY() + trasladarY);
+        setCoordenadaX(getCoordenadaX() + moverCoordenada(getCoordenadaX(),trasladarX));
+        setCoordenadaY(getCoordenadaY() + moverCoordenada(getCoordenadaY(),trasladarY));
     }
 }
