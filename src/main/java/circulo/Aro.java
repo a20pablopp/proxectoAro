@@ -17,36 +17,36 @@ public class Aro {
     public Aro(int valorX, int valorY, double valorRadio) {
         coordenadaX = valorX;
         coordenadaY = valorY;
-        establecerRadio(valorRadio);
+        setRadio(valorRadio);
     }
 
-    public void establecerX(int valorX) {
+    public void setCoordenadaX(int valorX) {
         coordenadaX=valorX;
     }
 
-    public int obterX() {
+    public int getCoordenadaX() {
         return coordenadaX;
     }
 
-    public void establecerY(int valorY) {
+    public void setCoordenadaY(int valorY) {
         coordenadaY=valorY;
     }
 
-    public int obterY() {
+    public int getCoordenadaY() {
         return coordenadaY;
     }
 
-    public void establecerRadio(double valorRadio) {
+    public void setRadio(double valorRadio) {
 
         radio=(valorRadio < LIMITERADIO ? LIMITERADIO : valorRadio);
     }
 
-    public double obterRadio() {
+    public double getRadio() {
         return radio;
     }
 
     public double obterDiametro() {
-        return radio * 2;
+        return getRadio() * 2;
     }
 
     public double obterCircunferencia() {
@@ -54,16 +54,16 @@ public class Aro {
     }
 
     public double obterSuperficie() {
-        return Math.PI * radio * radio;
+        return Math.PI * getRadio() * getRadio();
     }
 
     @Override
     public String toString() {
-        return "Centro = [" + coordenadaX + "," + coordenadaY + "]; Radio = " + radio;
+        return "Centro = [" + getCoordenadaX() + "," + getCoordenadaY() + "]; Radio = " + getRadio();
     }
 
     public void trasladarCentro(int trasladarX, int trasladarY){
-        establecerX(obterX() + trasladarX);
-        establecerY(obterY() + trasladarY);
+        setCoordenadaX(getCoordenadaX() + trasladarX);
+        setCoordenadaY(getCoordenadaY() + trasladarY);
     }
 }
