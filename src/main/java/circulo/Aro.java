@@ -53,13 +53,13 @@ public class Aro {
     *trasladarX o Y valores que pueden superar el limite de los enteros
     *negativos y positivos, el método moverCoordenada evita esto.
     */
-    public static double estableceRadio(double valorRadio) {
+    private static double estableceRadio(double valorRadio) {
         if(valorRadio<0)
             valorRadio = LIMITERADIO;
         return valorRadio;
     }
 
-    public static int moverCoordenada(int coordenada,int trasladar) {
+    private static int moverCoordenada(int coordenada,int trasladar) {
         long suma = (long) coordenada + (long) trasladar;
         if(suma>LIM_INT_POSI){
             return LIM_INT_POSI;
