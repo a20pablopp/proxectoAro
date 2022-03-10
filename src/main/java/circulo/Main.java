@@ -7,6 +7,12 @@ import java.text.DecimalFormat;
  * @author Pablo Perez Paz
  */
 public class Main {
+
+    /**
+     * Programa que genera un objeto Aro, cambiando su centro y radio y devuelve
+     * las coordenadas del centro, el diametro, perímetro y el área.
+     * @param args
+     */
     public static void main(String[] args) {
         Aro circulo = new Aro(37,43,2.5);
         String saida =
