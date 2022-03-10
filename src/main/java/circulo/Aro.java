@@ -7,7 +7,7 @@ package circulo;
 public class Aro {
 
     /**
-     * Constante que introduce un valor minimo para el radio
+     * Constante que introduce un valor minimo para el radio, la actual es 0.0
      */
     public static final double LIMITERADIO = 0.0;
 
@@ -26,7 +26,7 @@ public class Aro {
     private double radio;
 
     /**
-     * Constructor por defecto de la clase Aro valores (0,0,0.0)
+     * Constructor por defecto de la clase Aro, valores (0,0,0.0)
      */
     public Aro() {
     }
@@ -44,7 +44,7 @@ public class Aro {
     }
 
     /**
-     * Método set para la coordenadaX establece el valor del atributo
+     * Método set para la coordenadaX, establece el valor del atributo
      * @param valorX
      */
     public void setCoordenadaX(int valorX) {
@@ -52,7 +52,7 @@ public class Aro {
     }
 
     /**
-     * Devuelve el valor del atributo coordenadaX de tipo private
+     * Devuelve el valor del atributo coordenadaX
      * @return un entero con la coordenada X
      */
     public int getCoordenadaX() {
@@ -60,7 +60,7 @@ public class Aro {
     }
 
     /**
-     * Establece el valor de coordenada Y tras pasarle un entero con el valor
+     * Establece el valor de coordenadaY tras pasarle un entero con el valor
      * @param valorY
      */
     public void setCoordenadaY(int valorY) {
@@ -68,15 +68,15 @@ public class Aro {
     }
 
     /**
-     * Devuelve el valor del atributo coordenadaY de tipo private
-     * @return un entero con la coordenada Y
+     * Devuelve el valor del atributo coordenadaY
+     * @return coordenadaY un valor entero
      */
     public int getCoordenadaY() {
         return coordenadaY;
     }
 
     /**
-     * Establece el valor del radio tras pasarle un valor de tipo double
+     * Establece el valor del radio tras pasarle un valor real
      * @param valorRadio
      */
     public void setRadio(double valorRadio) {
@@ -85,14 +85,15 @@ public class Aro {
     }
 
     /**
-     * Devuelve el valor del atributo radio de tipo private y double
+     * Devuelve el valor del atributo radio
      * @return el radio en formato double
      */
     public double getRadio() {
         return radio;
     }
     
-    /*Se crean los dos metodos estáticos detallados a continuación, el 1º para
+    /*
+    *Se crean los dos metodos estáticos detallados a continuación, el 1º para
     *no invocar a un método set en el constructor. El segundo como resultado del
     *error que cabria esperarse si se utilizan parámetros muy grandes para 
     *trasladarX o Y valores que pueden superar el limite de los enteros
@@ -114,10 +115,10 @@ public class Aro {
 
     /**
      * Establece un valor dentro de los limites de los enteros para una
-     * coordenada y un valor a trasladar ambos enteros
+     * coordenada, tras trasladar una cantidad entera dicha coordenada.
      * @param coordenada
      * @param trasladar
-     * @return coordenada + trasladar, si pasan del limite el entero más cercano
+     * @return coordenada + trasladar, si pasan del limite, el entero más cercano
      */
     public static int moverCoordenada(int coordenada,int trasladar) {
         long suma = (long) coordenada + (long) trasladar;
@@ -139,7 +140,7 @@ public class Aro {
     }
 
     /**
-     * Devuelve el perimetro de la circunferencia a partir del métrodo obterDiametro
+     * Devuelve el perimetro de la circunferencia a partir del método obterDiametro
      * @return diametro*PI
      */
     public double obterCircunferencia() {
@@ -155,8 +156,8 @@ public class Aro {
     }
 
     /**
-     *
-     * @return
+     * Devuelve una representación en String de los atributos de un objeto. 
+     * @return un String con el valor del centro y radio del Aro
      */
     @Override
     public String toString() {
@@ -169,7 +170,9 @@ public class Aro {
      * @param trasladarY
      */
     public void trasladarCentro(int trasladarX, int trasladarY){
-        setCoordenadaX(getCoordenadaX() + moverCoordenada(getCoordenadaX(),trasladarX));
-        setCoordenadaY(getCoordenadaY() + moverCoordenada(getCoordenadaY(),trasladarY));
+        int desplazamientoX = moverCoordenada(getCoordenadaX(),trasladarX);
+        setCoordenadaX(getCoordenadaX() + desplazamientoX);
+        int desplazamientoY = moverCoordenada(getCoordenadaY(),trasladarY);
+        setCoordenadaY(getCoordenadaY() + desplazamientoY);
     }
 }
