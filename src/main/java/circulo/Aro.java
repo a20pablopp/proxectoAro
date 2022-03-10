@@ -107,7 +107,7 @@ public class Aro {
      */
 
     
-    public static double estableceRadio(double valorRadio) {
+    private static double estableceRadio(double valorRadio) {
         if(valorRadio<0)
             valorRadio = LIMITERADIO;
         return valorRadio;
@@ -120,7 +120,7 @@ public class Aro {
      * @param trasladar
      * @return coordenada + trasladar, si pasan del limite, el entero más cercano
      */
-    public static int moverCoordenada(int coordenada,int trasladar) {
+    private static int moverCoordenada(int coordenada,int trasladar) {
         long suma = (long) coordenada + (long) trasladar;
         if(suma>LIM_INT_POSI){
             return LIM_INT_POSI;
